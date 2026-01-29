@@ -1,20 +1,82 @@
+:root {
+    --background-color: #000010;
+    --text-color: #fff;
+    --container-bg-color: rgba(0, 0, 0, 0.5);
+    --container-shadow-color: rgba(255, 255, 255, 0.2);
+    --number-bg-color: rgba(255, 255, 255, 0.1);
+    --number-shadow-color: rgba(255, 255, 255, 0.3);
+    --btn-bg-color: #ff4081;
+    --btn-hover-bg-color: #ff80ab;
+    --btn-shadow-color: #ff4081;
+    --btn-hover-shadow-color: #ff80ab;
+    --text-shadow-color: #fff;
+}
+
+body[data-theme='light'] {
+    --background-color: #f0f2f5;
+    --text-color: #333;
+    --container-bg-color: rgba(255, 255, 255, 0.8);
+    --container-shadow-color: rgba(0, 0, 0, 0.1);
+    --number-bg-color: rgba(0, 0, 0, 0.05);
+    --number-shadow-color: rgba(0, 0, 0, 0.1);
+    --btn-bg-color: #337ab7;
+    --btn-hover-bg-color: #5a98d2;
+    --btn-shadow-color: #337ab7;
+    --btn-hover-shadow-color: #5a98d2;
+    --text-shadow-color: #aaa;
+}
+
+
 body {
     margin: 0;
     font-family: 'NEXON Lv1 Gothic OTF';
-    background-color: #000010;
-    color: #fff;
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
+
+.theme-switch-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+#theme-switch-btn {
+    background: var(--number-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--number-shadow-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#theme-switch-btn:hover {
+    background: var(--container-bg-color);
+    box-shadow: 0 0 10px var(--container-shadow-color);
+}
+
 
 .space-background {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: -1;
+}
+
+body[data-theme='light'] .space-background {
+    display: none;
 }
 
 #stars, #stars2, #stars3 {
@@ -54,18 +116,19 @@ body {
 
 .lotto-container {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--container-bg-color);
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    position: relative; /* Ensures z-index is applied correctly */
-    z-index: 1; /* Bring to the front */
+    box-shadow: 0 0 20px var(--container-shadow-color);
+    position: relative; 
+    z-index: 1;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 h1 {
     font-size: 3rem;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px #fff;
+    text-shadow: 0 0 10px var(--text-shadow-color);
 }
 
 .lotto-numbers {
@@ -78,32 +141,32 @@ h1 {
 .lotto-number {
     width: 60px;
     height: 60px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--number-bg-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.8rem;
     font-weight: bold;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px var(--number-shadow-color);
     transition: all 0.3s ease;
 }
 
 #generate-btn {
-    background-color: #ff4081;
+    background-color: var(--btn-bg-color);
     color: #fff;
     border: none;
     padding: 15px 30px;
     font-size: 1.2rem;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 0 15px #ff4081;
+    box-shadow: 0 0 15px var(--btn-shadow-color);
     transition: all 0.3s ease;
 }
 
 #generate-btn:hover {
-    background-color: #ff80ab;
-    box-shadow: 0 0 25px #ff80ab;
+    background-color: var(--btn-hover-bg-color);
+    box-shadow: 0 0 25px var(--btn-hover-shadow-color);
 }
 
 @font-face {
